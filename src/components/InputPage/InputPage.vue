@@ -27,20 +27,21 @@ const data = ref({
       <a-list size="small">
         <a-list-item>
           <a-row>
-            <a-col :span="8" class="item">
+            <a-col :span="10" class="item">
               <Typography>卡路里</Typography>
             </a-col>
             <a-col :span="12">
               <InputNumber
                 class="item"
                 v-model="data.calories"
+                :step="100"
                 mode="button"
                 placeholder="Please Enter"
               />
             </a-col>
           </a-row>
           <a-row>
-            <a-col :span="8" class="item">
+            <a-col :span="10" class="item">
               <Typography>運動時間</Typography>
             </a-col>
             <a-col :span="12" class="item">
@@ -48,7 +49,7 @@ const data = ref({
             </a-col>
           </a-row>
           <a-row>
-            <a-col :span="8" class="item">
+            <a-col :span="10" class="item">
               <Typography>今日體重</Typography>
             </a-col>
             <a-col :span="12" class="item">
@@ -62,7 +63,7 @@ const data = ref({
             </a-col>
           </a-row>
           <a-row>
-            <a-col :span="8" class="item">
+            <a-col :span="10" class="item">
               <Typography>連勝天數</Typography>
             </a-col>
             <a-col :span="12" class="item">
@@ -71,7 +72,7 @@ const data = ref({
             </a-col>
           </a-row>
           <a-row>
-            <a-col :span="8" class="item">
+            <a-col :span="10" class="item">
               <Typography>運動類別</Typography>
             </a-col>
             <a-col :span="12" class="item">
@@ -79,7 +80,7 @@ const data = ref({
             </a-col>
           </a-row>
           <a-row>
-            <a-col :span="8" class="item">
+            <a-col :span="10" class="item">
               <Typography>疲憊指數</Typography>
             </a-col>
             <a-col :span="12" class="item">
@@ -91,7 +92,7 @@ const data = ref({
             </a-col>
           </a-row>
           <a-row>
-            <a-col :span="8" class="item">
+            <a-col :span="10" class="item">
               <Typography>心得</Typography>
             </a-col>
             <a-col :span="12" class="item">
@@ -109,6 +110,6 @@ const data = ref({
 </template>
 <style scoped>
 .item {
-  padding: 5px 10px;
+  padding: 5px 0px;
 }
 </style>

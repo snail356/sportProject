@@ -23,6 +23,7 @@ declare module 'vue' {
     AList: typeof import('@arco-design/web-vue')['List']
     AListItem: typeof import('@arco-design/web-vue')['ListItem']
     AListItemMeta: typeof import('@arco-design/web-vue')['ListItemMeta']
+    AMonthPicker: typeof import('@arco-design/web-vue')['MonthPicker']
     ARadio: typeof import('@arco-design/web-vue')['Radio']
     ARadioGroup: typeof import('@arco-design/web-vue')['RadioGroup']
     ARangePicker: typeof import('@arco-design/web-vue')['RangePicker']
@@ -36,11 +37,14 @@ declare module 'vue' {
     CalendarGrid: typeof import('./src/components/Calendar/CalendarGrid.vue')['default']
     CalendarHeader: typeof import('./src/components/Calendar/CalendarHeader.vue')['default']
     Chart: typeof import('./src/components/Chart/Chart.vue')['default']
+    ChartPage: typeof import('./src/components/ChartPage/ChartPage.vue')['default']
+    DateSelect: typeof import('./src/components/DateSelect/DateSelect.vue')['default']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
     Icon: typeof import('./src/components/Icon/Icon.vue')['default']
     InputPage: typeof import('./src/components/InputPage/InputPage.vue')['default']
     Layout: typeof import('./src/components/Layout/Layout.vue')['default']
     Llist: typeof import('./src/components/ComponetList/Llist.vue')['default']
     LlistItem: typeof import('./src/components/ComponetList/LlistItem.vue')['default']
+    Select: typeof import('./src/components/Select/Select.vue')['default']
   }
 }

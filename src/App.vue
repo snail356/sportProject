@@ -3,7 +3,9 @@ import Layout from "@/components/Layout";
 </script>
 
 <template>
-  <Layout />
+  <div>
+    <Layout />
+  </div>
 </template>
 
 <style scoped>
