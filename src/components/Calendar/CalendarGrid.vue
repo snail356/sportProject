@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { defineProps, computed, ref } from "vue";
+import { useStore } from "@/store/useStore";
+const store = useStore();
 
 const props = defineProps<{ year: number; month: number; pickDate: Array }>();
 
@@ -24,6 +26,7 @@ const bindClass = (day: string) => {
 
 const getDay = (e: any) => {
   console.log("e", e);
+  store.setConponent("DynamicWall");
 };
 </script>
 
