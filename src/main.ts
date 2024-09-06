@@ -2,6 +2,7 @@ import { createApp } from "vue";
 import { createPinia } from "pinia";
 import "./style.css";
 import App from "./App.vue";
+import "@/mock/productMock";
 import "@arco-design/web-vue/dist/arco.css";
 import ArcoVueIcon from "@arco-design/web-vue/es/icon";
 // 創建 Pinia 實例

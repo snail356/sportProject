@@ -5,7 +5,8 @@ import ChartPage from "@/components/ChartPage";
 import DynamicWall from "@/components/DynamicWall";
 import Icon from "@/components/Icon";
 import { useStore } from "@/store/useStore";
-import { computed } from "vue";
+import { computed, onMounted, ref } from "vue";
+import axios from "axios";
 
 const store = useStore();
 const component = computed(() => {
