@@ -19,7 +19,7 @@ const props = defineProps({
   },
 });
 
-const data: Ref<DayData | undefined> = ref({
+const data: Ref<DayData> = ref({
   calories: 0,
   excerciseTime: 0,
   weight: 0,
@@ -28,7 +28,15 @@ const data: Ref<DayData | undefined> = ref({
   fatigueIndex: 0,
   text: "",
 });
-data.value = props.data;
+data.value = props.data ?? {
+  calories: 0,
+  excerciseTime: 0,
+  weight: 0,
+  streakDays: 0,
+  sportsCategory: 0,
+  fatigueIndex: 0,
+  text: "",
+};
 </script>
 <template>
   <div>

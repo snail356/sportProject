@@ -65,7 +65,7 @@ const setObj = ref({
 function drawChart() {
   const ctx = document.getElementById("heroChart") as HTMLCanvasElement;
   if (ctx) {
-    new Chart(ctx, setObj.value);
+    new Chart(ctx, setObj.value as any);
   }
 }
 

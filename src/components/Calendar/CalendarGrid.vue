@@ -1,26 +1,35 @@
 <script setup lang="ts">
-import { defineProps, computed, ref } from "vue";
+import { defineProps, computed, ref, PropType } from "vue";
 import { useStore } from "@/store/useStore";
 const store = useStore();
 
-const props = defineProps<{ year: number; month: number; pickDate: Array }>();
+const props = defineProps({
+  year: { type: Number, require: true },
+  month: { type: Number },
+  pickDate: { type: Array as PropType<string[]> },
+});
 
 const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
 const daysInMonth = computed(() => {
-  const date = new Date(props.year, props.month, 0);
-  return Array.from({ length: date.getDate() }, (_, i) => i + 1);
+  const date = new Date(props.year ?? 0, props.month ?? 0, 0);
+  const result = Array.from({ length: date.getDate() }, (_, i) => i + 1);
+  return result;
 });
 
 const leadingEmptyDays = computed(() => {
-  const firstDayOfMonth = new Date(props.year, props.month - 1, 1).getDay();
+  const firstDayOfMonth = new Date(
+    props.year ?? 0,
+    props.month ?? 0 - 1,
+    1
+  ).getDay();
   return Array.from({ length: firstDayOfMonth }, (_, i) => i + 1);
 });
 const pickDate = ref(["2024/7/12", "2024/7/15"]);
 const handlePickDate = computed(() => {
   return pickDate.value.map((date: string) => date.split("/")[2]);
 });
-const bindClass = (day: string) => {
+const bindClass = (day: number) => {
   return { "date-pick": handlePickDate.value.includes(day.toString()) };
 };
 
