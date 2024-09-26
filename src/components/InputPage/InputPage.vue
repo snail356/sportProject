@@ -1,33 +1,47 @@
 <script setup lang="ts">
-import { onMounted, ref } from "vue";
+import { onMounted, reactive, ref } from "vue";
 
 import Bubbles from "@/components/Bubbles";
 import DayCard from "@/components/DayCard";
-import Icon from "@/components/Icon";
 import axios from "axios";
-const data = ref({
-  calories: 150,
-  excerciseTime: 0,
-  weight: 50,
-  streakDays: 3,
-  sportsCategory: 0,
-  fatigueIndex: 3.5, // 星數
-  text: "",
+const state = reactive({
+  data: {
+    calories: 105,
+    excerciseTime: 0,
+    weight: 50,
+    streakDays: 3,
+    sportsCategory: 0,
+    fatigueIndex: 3.5, // 星數
+    text: "",
+  },
 });
-const products = ref<any[]>([]);
-onMounted(async () => {
+const getData = async () => {
   try {
     const response = await axios.get("/api/products");
-    products.value = response.data.data;
+
+    state.data = response.data.data[0];
   } catch (error) {
     console.error("Error fetching products:", error);
   }
-});
+};
+const set = () => {
+  state.data = {
+    calories: 99999,
+    excerciseTime: 0,
+    weight: 50,
+    streakDays: 3,
+    sportsCategory: 0,
+    fatigueIndex: 3.5, // 星數
+    text: "",
+  };
+};
+getData();
 </script>
 <template>
-  {{ products[0] }}
   <div>
-    <DayCard :data="data"><Bubbles v-model="data.calories" /></DayCard>
+    <DayCard v-model="state.data"
+      ><Bubbles v-model="state.data.calories"
+    /></DayCard>
   </div>
 </template>
 <style scoped>

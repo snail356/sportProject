@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { PropType, ref, Ref } from "vue";
+import { computed, PropType } from "vue";
 import {
   Input,
   Typography,
@@ -14,29 +14,26 @@ const props = defineProps({
   disabled: {
     type: Boolean,
   },
-  data: {
+  modelValue: {
     type: Object as PropType<DayData>,
   },
 });
-
-const data: Ref<DayData> = ref({
-  calories: 0,
-  excerciseTime: 0,
-  weight: 0,
-  streakDays: 0,
-  sportsCategory: 0,
-  fatigueIndex: 0,
-  text: "",
+const emit = defineEmits(["update:modelValue"]);
+const data = computed({
+  get: () =>
+    props.modelValue ?? {
+      calories: 0,
+      excerciseTime: " 0",
+      weight: 50,
+      streakDays: 3,
+      sportsCategory: 0,
+      fatigueIndex: 3.5, // 星數
+      text: "",
+    },
+  set: (newValue) => {
+    emit("update:modelValue", newValue);
+  },
 });
-data.value = props.data ?? {
-  calories: 0,
-  excerciseTime: 0,
-  weight: 0,
-  streakDays: 0,
-  sportsCategory: 0,
-  fatigueIndex: 0,
-  text: "",
-};
 </script>
 <template>
   <div>
