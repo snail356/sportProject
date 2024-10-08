@@ -60,22 +60,37 @@ const setObj = ref({
     },
   },
 });
-
+let chartInstance: Chart | null = null; // 儲存圖表實例
 // 繪製圖表
 function drawChart() {
   const ctx = document.getElementById("heroChart") as HTMLCanvasElement;
   if (ctx) {
-    new Chart(ctx, setObj.value as any);
+    // 如果已經有舊的圖表，先銷毀它
+    if (chartInstance) {
+      chartInstance.destroy();
+    }
+
+    // 創建新的圖表實例
+    chartInstance = new Chart(ctx, setObj.value as any);
   }
 }
 
+watch(
+  () => props.labels,
+  (curr: any) => {
+    dataObj.value.labels = curr;
+    drawChart();
+  },
+  {
+    deep: true,
+  }
+);
 onMounted(() => {
   drawChart();
 });
 </script>
 
 <template>
-  {{ props.labels }}
   <div class="card-content-image">
     <canvas id="heroChart" width="100%" height="380"></canvas>
   </div>
