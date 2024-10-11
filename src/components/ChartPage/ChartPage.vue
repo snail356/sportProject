@@ -29,12 +29,22 @@ const init = () => {
   const currentDate = new Date();
   const year = currentDate.getFullYear(); // 獲取當前年份
   const month = currentDate.getMonth() + 1; // 獲取當前月份，getMonth() 從 0 開始，需加 1
-  daysInMonth.value = getDaysInMonth(year, month);
+  const dataeString = `${year}-${month}`;
+  const result = getDaysInMonth(year, month);
+  dateMap.set(dataeString, result);
+  daysInMonth.value = result;
 };
 const change = (dateString: string) => {
   const year = dateString.split("-")[0];
   const month = dateString.split("-")[1];
-  daysInMonth.value = getDaysInMonth(Number(year), Number(month));
+  const dataeString = `${year}-${month}`;
+  if (dateMap.has(dataeString) == true) {
+    daysInMonth.value = dateMap.get(dataeString) as string[];
+  } else {
+    const result = getDaysInMonth(Number(year), Number(month));
+    dateMap.set(dataeString, result);
+    daysInMonth.value = result;
+  }
 };
 
 init();
